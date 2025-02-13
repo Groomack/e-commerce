@@ -3,7 +3,7 @@
   <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE v4 | Dashboard</title>
+    <title>E-commerce | Dashboard</title>
     <!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="title" content="AdminLTE v4 | Dashboard" />
@@ -17,6 +17,9 @@
       content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"
     />
     <!--end::Primary Meta Tags-->
+    {{-- start::Jquery Plugin --}}
+    <script src="{{ asset('adminlte/dist/js/jquery.min.js')}}"></script>
+    {{-- end::Jquery Plugin --}}
     <!--begin::Fonts-->
     <link
       rel="stylesheet"
@@ -44,6 +47,11 @@
     <!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.css') }}" />
     <!--end::Required Plugin(AdminLTE)-->
+    {{-- start::Select2 Plugin --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    {{-- end::Select2 Plugin --}}
   </head>
   <!--end::Head-->
   <!--begin::Body-->
@@ -226,7 +234,7 @@
             >
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon bi bi-speedometer"></i>
+                  <i class="nav-icon bi bi-box-seam"></i>
                   <p>
                     Товары
                     <i class="nav-arrow bi bi-chevron-right"></i>
@@ -235,27 +243,21 @@
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="./index.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Dashboard v1</p>
+                      <i class="nav-icon bi bi-dot"></i>
+                      <p>Все товары</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="./index2.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Dashboard v2</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="./index3.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Dashboard v3</p>
+                    <a href="{{ route('products.create') }}" class="nav-link">
+                      <i class="nav-icon bi bi-dot"></i>
+                      <p>Добавить товар</p>
                     </a>
                   </li>
                 </ul>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="nav-item bi bi-grid"></i>
+                  <i class="nav-icon bi bi-grid"></i>
                   <p>
                     Категории
                     <i class="nav-arrow bi bi-chevron-right"></i>
@@ -395,15 +397,18 @@
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
       crossorigin="anonymous"
     ></script>
-    <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
+    <!--end::Required Plugin(popperjs for Bootstrap 5)-->
+    <!--begin::Required Plugin(Bootstrap 5)-->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
-    <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
+    <!--end::Required Plugin(Bootstrap 5)-->
+    <!--begin::Required Plugin(AdminLTE)-->
     <script src="{{ asset('adminlte/dist/js/adminlte.js') }}"></script>
-    <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+    <!--end::Required Plugin(AdminLTE)-->
+    <!--begin::OverlayScrollbars Configure-->
     <script>
       const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
       const Default = {
@@ -425,6 +430,11 @@
       });
     </script>
     <!--end::OverlayScrollbars Configure-->
+    {{-- begin::Select2 Plugin --}}
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    {{-- end::Select2 Plugin --}}
   </body>
   <!--end::Body-->
 </html>

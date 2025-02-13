@@ -38,6 +38,15 @@ Route::prefix('admin')->group(function () {
         Route::patch('/users/{user}', UpdateController::class)->name('users.update');
         Route::delete('/users/{user}', DestroyController::class)->name('users.destroy');
     });
+    Route::namespace('App\Http\Controllers\Product')->group(function () {  
+        // Route::get('/products', IndexController::class)->name('products.index');
+        Route::get('/products/create', CreateController::class)->name('products.create');
+        // Route::post('/products', StoreController::class)->name('products.store');
+        // Route::get('/products/{product}', ShowController::class)->name('products.show');
+        // Route::get('/products/{product}/edit', EditController::class)->name('products.edit');
+        // Route::patch('/products/{product}', UpdateController::class)->name('products.update');
+        // Route::delete('/products/{product}', DestroyController::class)->name('products.destroy');
+    });
     
 });
 
