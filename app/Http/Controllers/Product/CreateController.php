@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers\Product;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Color;
+use App\Models\Tag;
+use App\Models\Category;
 
-class CreateController extends Controller
+class CreateController extends BaseController
 {
     public function __invoke()
     {
-        return view('product.create');    
+        $data = [
+            'colors' => Color::all(),
+            'tags' => Tag::all(),
+            'category' => Category::all(),
+        ];
+        return view('product.create', compact('data'));    
     }
 }
