@@ -14,7 +14,7 @@ class CreateController extends BaseController
         $data = [
             'colors' => Color::all(),
             'tags' => Tag::all(),
-            'category' => Category::all(),
+            'categories' => Category::all(),
         ];
         return view('product.create', compact('data'));    
     }

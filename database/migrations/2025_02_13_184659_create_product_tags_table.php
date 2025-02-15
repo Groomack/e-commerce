@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_tags', function (Blueprint $table) {
+        Schema::create('product_tag', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->nullable()->index()->constrained('products');
             $table->foreignId('tag_id')->nullable()->index()->constrained('tags');
