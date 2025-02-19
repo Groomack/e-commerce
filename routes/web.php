@@ -44,8 +44,8 @@ Route::prefix('admin')->group(function () {
         Route::post('/products', StoreController::class)->name('products.store');
         Route::get('/products/{product}', ShowController::class)->name('products.show');
         Route::get('/products/{product}/edit', EditController::class)->name('products.edit');
-        // Route::patch('/products/{product}', UpdateController::class)->name('products.update');
-        // Route::delete('/products/{product}', DestroyController::class)->name('products.destroy');
+        Route::patch('/products/{product}', UpdateController::class)->name('products.update');
+        Route::delete('/products/{product}', DestroyController::class)->name('products.destroy');
     });
     
 });

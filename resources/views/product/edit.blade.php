@@ -4,8 +4,9 @@
     <div class="col-md-4">
         <div class="card card-primary card-outline mb-4">
             <!--begin::Form-->
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="{{ route('products.update', $data['product']->id) }}" method="post" enctype="multipart/form-data">
             @csrf
+            @method('patch')
             <!--begin::Body-->
             <div class="card-body">
                 <div class="form-group mb-3">
@@ -38,9 +39,9 @@
                 </div>
                     <div class="form-group mb-3">
                     <label for="colors" class="form-label">Цвет <small>(зажмите ctrl чтобы выбрать несколько цветов)</small></label>
-                    <select name="colors[]" multiple class="form-select">
+                    <select name="colors[]" multiple class="form-select" aria-label="Multiple select example">
                         @foreach ($data['colors'] as $item)
-                            <option value="{{ $item->id }}" style="background-color: {{ $item->title }}">{{ $item->title }}</option>
+                            <option @selected(in_array($item->id, $data['colorsProduct'])) value="{{ $item->id }}">{{ $item->title }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -65,7 +66,7 @@
                     <label for="previewImage" class="form-label">Изображение</label>
                     <div>
                         <p>Текущее изображение</p>
-                        <img src="{{ $data['product']->previewImage }}" alt="">
+                        <img class="mb-3" width="200rem" src="{{ Storage::url($data['product']->previewImage) }}" alt="{{ $data['product']->title }}">
                     </div>
                     <div class="input-group mb-3">
                         <input name="previewImage" type="file" class="form-control" id="previewImage">

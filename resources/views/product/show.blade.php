@@ -3,16 +3,20 @@
     <x-header :header="$header = 'Товар ' . $data['product']->title"/>
     <div class="col-md-4">
         <div class="card mb-4">
-            <div class="card-header">
+            <div class="card-header d-flex">
                 <a href="{{ route('products.edit', $data['product']->id) }}" class="btn btn-primary">Редактировать</a>
-                <a href="" class="btn btn-danger">Удалить</a>
+                <form class="ms-2" action="{{ route('products.destroy', $data['product']->id) }}" method="post">
+                  @csrf
+                  @method('delete')
+                  <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
             </div>
             <div class="card-body p-0">
               <table class="table">
                 <tbody>
                   <tr class="align-middle">
                     <td>Изображение</td>
-                    <td><img src="{{ $data['product']->previewImage }}" alt=""></td>
+                    <td><img width="100rem" src="{{ Storage::url($data['product']->previewImage) }}" alt="{{ $data['product']->title }}"></td>
                   </tr>
                   <tr class="align-middle">
                     <td>ID</td>

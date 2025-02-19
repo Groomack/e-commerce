@@ -4,7 +4,7 @@ namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,10 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|unique:products,title',
+            'title' => 'required|string',
             'price' => 'required|integer',
             'quantity' => 'required|integer',
-            'previewImage' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'previewImage' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'description' => 'required|string',
             'category_id' => 'nullable',
             'tags' => 'nullable|array',
@@ -36,7 +36,6 @@ class StoreRequest extends FormRequest
     {
         return [
             'title.required' => 'Это поле обязательно для заполнения',
-            'title.unique' => 'Такой товар уже существует',
             'price.required' => 'Это поле обязательно для заполнения',
             'price.integer' => 'Введите число',
             'quantity.required' => 'Это поле обязательно для заполнения',
@@ -44,7 +43,7 @@ class StoreRequest extends FormRequest
             'previewImage.required' => 'Прикрепите изображение',
             'previewImage.image' => 'Файл должен быть картинкой',
             'previewImage.mimes' => 'Картинка должна быть в формате: jpg, jpeg, png',
-            'previewImage.size' => 'Размер файла не должен превышать 2мб',
+            'previewImage.max' => 'Размер файла не должен превышать 2мб',
             'description.required' => 'Это поле обязательно для заполнения'
             
         ];

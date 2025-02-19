@@ -23,4 +23,31 @@ class Service
             if($colors) {$product->colors()->attach($colors);}
         });
     }
+    public function update($data, $product)
+    {
+        $tags = $data['tags'] ?? '';
+        $colors = $data['colors'] ?? '';
+        if(!isset($data['previewImage']))
+        {
+            $data['previewImage'] = $product->previewImage;
+        } else {
+            $data['previewImage'] = Storage::disk('public')->put('products', $data['previewImage']);
+            Storage::disk('public')->delete($product->previewImage);
+        }
+        unset($data['tags'], $data['colors']);
+        DB::transaction(function () use($product, $data, $tags, $colors) {
+            $product->update($data);
+            
+            if($tags) {
+                $product->tags()->sync($tags);
+            } else {
+                $product->tags()->sync([]);
+            }
+            if($colors) {
+                $product->colors()->sync($colors);
+            } else {
+                $product->colors()->sync([]);
+            }
+        });
+    }
 }

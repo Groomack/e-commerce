@@ -48,7 +48,7 @@
                     <label for="category_id" class="form-label">Категория</label>
                     <select name="category_id" class="form-select" id="category_id">
                         <option value="">Выберете категорию</option>
-                        @foreach ($data['category'] as $item)
+                        @foreach ($data['categories'] as $item)
                             <option @selected(old('category_id') == $item->id) value="{{ $item->id }}">{{ $item->title }}</option>
                         @endforeach
                     </select>

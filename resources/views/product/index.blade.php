@@ -35,7 +35,7 @@
                         <td>{{ $item->title }}</td>
                         <td class="text-center"><a href="{{ route('products.show', $item->id) }}" title='Просмотр' class="text-primary"><i class="bi bi-eye"></i></a></td>
                         <td class="text-center"><a href="{{ route('products.edit', $item->id) }}" title='Редактировать' class="text-primary"><i class="bi bi-pencil"></i></a></td>
-                        <form action="" method="post">
+                        <form action="{{ route('products.destroy', $item->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <td class="text-center"><button type="submit" title='Удалить' class="text-danger border-0 bg-transparent"><i class="bi bi-trash3"></i></a></td>
