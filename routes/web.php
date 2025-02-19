@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
+Route::get('/', function(){return view('welcome');});
+Route::get('/{pathMatch}', function(){return view('welcome');})->where('pathMatch', ".*");
+
 Route::prefix('admin')->group(function () {
     Route::get('/', AdminController::class)->name('admin.index');
     Route::namespace('App\Http\Controllers\Category')->group(function () {  
