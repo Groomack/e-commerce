@@ -23,12 +23,14 @@ class StoreRequest extends FormRequest
     {
         return [
             'title' => 'required',
+            'name' => 'required|string',
         ];
     }
     public function messages()
     {
         return [
-            'title.required' => 'Это поле обязательно для заполнения!',
+            'title.required' => 'Это поле обязательно для заполнения',
+            'name.required' => 'Это поле обязательно для заполнения'
         ];
     }
 }

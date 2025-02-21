@@ -27,4 +27,8 @@ class Product extends Model
     {
         return $this->belongstoMany(Color::class);
     }
+    public function getImageUrlAttribute()
+    {
+        return url('storage/' . $this->previewImage);
+    }
 }

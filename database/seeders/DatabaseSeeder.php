@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         Category::factory()->count(10)->create();
         $colors = Color::factory()->count(20)->create();
         $tags = Tag::factory()->count(20)->create();
-        $products = Product::factory()->count(3)->create();
+        $products = Product::factory()->count(40)->create();
         
         foreach ($products as $item) {
             $tagsIds = $tags->random(5)->pluck('id');

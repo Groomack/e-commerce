@@ -9,11 +9,18 @@
             <!--begin::Body-->
             <div class="card-body">
                 <div class="mb-3">
-                <label for="title" class="form-label">Нажмите чтобы выбрать цвет</label>
-                <input name="title" type="color" class="form-control form-control-color">
-                @error('title')
-                    <div class="form-text text-danger">{{ $message }}</div>
-                @enderror
+                    <label for="title" class="form-label">Нажмите чтобы выбрать цвет</label>
+                    <input name="title" type="color" class="form-control form-control-color">
+                    @error('title')
+                        <div class="form-text text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Название цвета</label>
+                    <input name="name" type="text" class="form-control">
+                    @error('name')
+                        <div class="form-text text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <!--end::Body-->

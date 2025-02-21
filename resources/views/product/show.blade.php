@@ -61,7 +61,7 @@
                     <td>Цвет</td>
                     <td>
                       @foreach ($data['product']->colors as $item)
-                          <span style="background-color: {{ $item->title }}" class="d-inline-block border p-2 mb-1">{{ $item->title }}</span>
+                          <span style="background-color: {{ $item->title }}" class="d-inline-block border p-2 mb-1">{{ $item->name }}</span>
                       @endforeach
                   </td>
                   </tr>

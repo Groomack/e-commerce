@@ -11,7 +11,7 @@ class StoreController extends Controller
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-        Color::firstOrCreate($data);
+        Color::firstOrCreate(['title' => $data['title']], $data);
         return redirect()->route('colors.index')->with('success', 'Цвет добавлен!');  
     }
 }

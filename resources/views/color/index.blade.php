@@ -24,7 +24,8 @@
                 <thead>
                 <tr>
                     <th style="width: 10px">#</th>
-                    <th>Номер цвета</th>
+                    <th>Номер</th>
+                    <th>Название</th>
                     <th class="text-center">Цвет</th>
                     <th class="text-center" colspan="2">Действие</th>
                 </tr>
@@ -34,6 +35,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->title }}</td>
+                        <td>{{ $item->name }}</td>
                         <td><span style="display: block; background-color: {{ $item->title }}; width: 25px; height: 25px; margin: auto"></span></td>
                         <td class="text-center"><a href="{{ route('colors.edit', $item->id) }}" title='Редактировать' class="text-primary"><i class="bi bi-pencil"></i></a></td>
                         <form action="{{ route('colors.destroy', $item->id) }}" method="post">
