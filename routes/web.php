@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
 Route::get('/', function(){return view('welcome');});
-Route::get('/{pathMatch}', function(){return view('welcome');})->where('pathMatch', ".*");
 
 Route::prefix('admin')->group(function () {
     Route::get('/', AdminController::class)->name('admin.index');
@@ -53,3 +52,8 @@ Route::prefix('admin')->group(function () {
     
 });
 
+// API
+
+Route::namespace('App\Http\Controllers\Api\Product')->prefix('api')->group(function () {
+    Route::get('/products', IndexController::class);
+});
