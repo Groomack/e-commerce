@@ -10,6 +10,7 @@ class DestroyController extends Controller
 {
     public function __invoke(Color $color)
     {
+        $color->products()->detach();
         $color->delete();
         return redirect()->route('colors.index')->with('deleted', 'Цвет удален!');    
     }

@@ -10,13 +10,7 @@ class DestroyController extends BaseController
 {
     public function __invoke(Product $product)
     {   
-        DB::transaction(function () use($product) {
-            Storage::disk('public')->delete($product->previewImage);
-            $product->tags()->detach();
-            $product->colors()->detach();
-            $product->delete();
-            
-        });
+        $this->service->destroy($product);
         
         return redirect()->route('products.index')->with('deleted', 'Товар удален');
     }

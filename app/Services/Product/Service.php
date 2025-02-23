@@ -50,4 +50,13 @@ class Service
             }
         });
     }
+    public function destroy($product)
+    {
+        DB::transaction(function () use ($product) {
+            Storage::disk('public')->delete($product->previewImage);
+            $product->tags()->detach();
+            $product->colors()->detach();
+            $product->delete();
+        });
+    }
 }

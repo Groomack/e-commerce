@@ -10,7 +10,7 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $data = Tag::all();
+        $data = Tag::paginate(10);
         return view('tag.index', compact('data'));    
     }
 }

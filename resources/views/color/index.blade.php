@@ -23,7 +23,7 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th style="width: 10px">#</th>
+                    <th style="width: 10px">ID</th>
                     <th>Номер</th>
                     <th>Название</th>
                     <th class="text-center">Цвет</th>
@@ -33,7 +33,7 @@
                 <tbody>
                 @foreach ($data as $item)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->id }}</td>
                         <td>{{ $item->title }}</td>
                         <td>{{ $item->name }}</td>
                         <td><span style="display: block; background-color: {{ $item->title }}; width: 25px; height: 25px; margin: auto"></span></td>
@@ -50,13 +50,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer clearfix">
-            <ul class="pagination pagination-sm m-0 float-end">
-                <li class="page-item"><a class="page-link" href="#">«</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">»</a></li>
-            </ul>
+            {{ $data->links() }}
             </div>
         </div>
         <a class="btn btn-primary" href="{{ route('colors.create') }}">Добавить</a>

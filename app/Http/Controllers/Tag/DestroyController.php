@@ -10,6 +10,7 @@ class DestroyController extends Controller
 {
     public function __invoke(Tag $tag)
     {
+        $tag->products()->detach();
         $tag->delete();
         return redirect()->route('tags.index')->with('deleted', 'Тег удален!');    
     }

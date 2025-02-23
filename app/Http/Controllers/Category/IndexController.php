@@ -10,7 +10,7 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $data = Category::all();
+        $data = Category::paginate(10);
         return view('category.index', compact('data'));    
     }
 }

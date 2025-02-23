@@ -23,15 +23,15 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th style="width: 10px">#</th>
-                    <th>Товар</th>
+                    <th style="width: 10px">ID</th>
+                    <th>Название товара</th>
                     <th class="text-center" colspan="3">Действие</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($data['products'] as $item)
+                @foreach ($data as $item)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->id }}</td>
                         <td>{{ $item->title }}</td>
                         <td class="text-center"><a href="{{ route('products.show', $item->id) }}" title='Просмотр' class="text-primary"><i class="bi bi-eye"></i></a></td>
                         <td class="text-center"><a href="{{ route('products.edit', $item->id) }}" title='Редактировать' class="text-primary"><i class="bi bi-pencil"></i></a></td>
@@ -47,13 +47,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer clearfix">
-            <ul class="pagination pagination-sm m-0 float-end">
-                <li class="page-item"><a class="page-link" href="#">«</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">»</a></li>
-            </ul>
+            {{ $data->links() }}
             </div>
         </div>
         <a class="btn btn-primary" href="{{ route('products.create') }}">Добавить</a>

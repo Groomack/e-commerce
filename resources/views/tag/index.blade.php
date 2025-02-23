@@ -23,7 +23,7 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th style="width: 10px">#</th>
+                    <th style="width: 10px">ID</th>
                     <th>Название тега</th>
                     <th class="text-center" colspan="2">Действие</th>
                 </tr>
@@ -31,7 +31,7 @@
                 <tbody>
                 @foreach ($data as $item)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->id }}</td>
                         <td>{{ $item->title }}</td>
                         <td class="text-center"><a href="{{ route('tags.edit', $item->id) }}" title='Редактировать' class="text-primary"><i class="bi bi-pencil"></i></a></td>
                         <form action="{{ route('tags.destroy', $item->id) }}" method="post">
@@ -46,13 +46,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer clearfix">
-            <ul class="pagination pagination-sm m-0 float-end">
-                <li class="page-item"><a class="page-link" href="#">«</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">»</a></li>
-            </ul>
+            {{ $data->links() }}
             </div>
         </div>
         <a class="btn btn-primary" href="{{ route('tags.create') }}">Добавить</a>

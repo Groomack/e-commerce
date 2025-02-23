@@ -8,9 +8,7 @@ class IndexController extends BaseController
 {
     public function __invoke()
     {   
-        $data = [
-            'products' => Product::all(),
-        ];
+        $data = Product::paginate(10);
         return view('product.index', compact('data'));
     }
 }
