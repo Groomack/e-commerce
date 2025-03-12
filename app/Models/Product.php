@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use App\Http\Filters\QueryFilter;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Color;
@@ -30,5 +32,11 @@ class Product extends Model
     public function getImageUrlAttribute()
     {
         return url('storage/' . $this->previewImage);
+    }
+
+    //Filter
+    public function scopeFilter(Builder $builder, QueryFilter $filter)
+    {
+        return $filter->apply($builder);
     }
 }

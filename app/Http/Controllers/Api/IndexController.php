@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Api\Product;
+namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Http\Resources\Product\ProductResource;
 
 class IndexController extends Controller
 {
     public function __invoke()
-    { 
-        return ProductResource::collection(Product::all());
+    {
+        $data = Tag::paginate(10);
+        return view('tag.index', compact('data'));    
     }
 }

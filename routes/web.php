@@ -3,8 +3,22 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
-Route::get('/', function(){return view('welcome');});
 
+// Public routes
+Route::namespace('App\Http\Controllers\Public')->group(function() {
+    Route::get('/', IndexController::class)->name('index');
+});
+
+// Cart
+Route::namespace('App\Http\Controllers\Public\Cart')->group(function() {
+    Route::get('/cart', CartController::class)->name('cart');
+    Route::get('/add-to-cart/{product}', AddController::class)->name('addtocart');
+    Route::get('/update-cart/{product}', UpdateController::class)->name('updatecart');
+    Route::get('/delete/{product}', DeleteController::class)->name('delete');
+});
+
+
+// Admin routes
 Route::prefix('admin')->group(function () {
     Route::get('/', AdminController::class)->name('admin.index');
     Route::namespace('App\Http\Controllers\Category')->group(function () {  
@@ -49,11 +63,4 @@ Route::prefix('admin')->group(function () {
         Route::patch('/products/{product}', UpdateController::class)->name('products.update');
         Route::delete('/products/{product}', DestroyController::class)->name('products.destroy');
     });
-    
-});
-
-// API
-
-Route::namespace('App\Http\Controllers\Api\Product')->prefix('api')->group(function () {
-    Route::get('/products', IndexController::class);
 });
