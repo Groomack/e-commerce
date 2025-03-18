@@ -12,9 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('surname')->nullable()->after('name');
-            $table->unsignedSmallInteger('gender')->nullable()->after('surname');
-            $table->string('address')->nullable()->after('gender');
+            $table->foreignId('role_id')->index()->constrained('roles');
         });
     }
 
@@ -24,9 +22,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('surname');
-            $table->dropColumn('gender');
-            $table->dropColumn('address');
+           $table->dropIndex('role_id');
+           $table->dropForeign('role_id');
+           $table->dropColumn('role_id');
         });
     }
 };

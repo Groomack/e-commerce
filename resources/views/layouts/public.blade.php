@@ -33,6 +33,20 @@
                             </ul>
                         </li>
                     </ul>
+                    <div class="d-flex align-items-center me-5">
+                        @guest
+                            <a href="{{ route('login') }}" class="btn btn-outline-dark me-2">Log in</a>
+                            <a href="{{ route('register') }}" class="btn btn-outline-dark">Sign in</a>
+                        @endguest
+                        @auth
+                            <span class="me-2">{{ auth()->user()->name }}</span>
+                            <a href="{{ route('profile.edit') }}" class="d-block btn btn-outline-dark me-2">Profile</a>
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-outline-danger">Log out</button>
+                            </form>
+                        @endauth
+                    </div>
                     <a href="{{ route('cart') }}" class="btn btn-outline-dark">
                         <i class="bi-cart-fill me-1"></i>
                         Cart
